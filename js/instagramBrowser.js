@@ -255,11 +255,11 @@ function onPhotoLoaded(data, settings){
 				instagramPhoto +=    '<img src="' + photo.images.standard_resolution.url + '" class="coverflow__image">';
 
 	            jQuery(instagramPhoto).appendTo(ibObj);
-	            setTimeout(coverFlowIt,500)
             }
 			
 			// Count photos
 			var photoCount = jQuery('.instagram-photo').size() - 1;
+	            setTimeout(coverFlowIt,500)
 			
 			if( addingToList == false ){
 				jQuery('.instagram-photo').hide();
@@ -326,6 +326,7 @@ jQuery.fn.instagramBrowser = function ( options ) {
 		// Events
 		jQuery(".searchInstagram").click(function(){
 			// Clear UI
+			jQuery('.coverflow').empty();			
 			ibObj.html("");
 			
 			// Detect if the input has user rel or tag rel and use different methods for each... 

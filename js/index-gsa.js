@@ -91,24 +91,26 @@ jQuery(document).ready(function($){
 	});
 	jQuery('.final').bind("DOMSubtreeModified", function() {
 		var voiceInput = interim_span.innerHTML;
+			jQuery('.year-entry,.gsc-input').val(voiceInput.replace(/[_\W]+/g, "-") + 'travel');
 		if (voiceInput.indexOf('Philippines') !== -1) {
-			jQuery('.year-entry').val('Philippines' + 'travel');
 			jQuery('#start_button').text('Getting Faces and Images');
 			jQuery('body').attr('class','');
+			jQuery('.or-search').addClass('fadeOut').addClass('hide');
+			jQuery('.year-entry').addClass('fadeOut').addClass('hide');
 			jQuery('body').toggleClass('phillipines');
-			jQuery('.searchInstagram').click();
+			jQuery('.searchInstagram,.gsc-search-button').click();
+			
 			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/gfl4ZJFbxkE?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
-			jQuery('#start_button').addClass('fadeOut').addClass('hide');
-
+			coverFlowIt();
+		
 		}
 		if (voiceInput.indexOf('China') !== -1) {
-			jQuery('.year-entry').val('China' + 'travel');
 			jQuery('#start_button').text('Getting Faces and Images');
 			jQuery('body').attr('class','');
 			jQuery('body').toggleClass('china');
 			jQuery('.searchInstagram').click();
 			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/6G7rUuh74bM?controls=0&start=20&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
-			jQuery('#start_button').addClass('fadeOut').addClass('hide');
+			
 		}
 		if (voiceInput.indexOf('joy') !== -1) {
 			jQuery('body').attr('class','');
