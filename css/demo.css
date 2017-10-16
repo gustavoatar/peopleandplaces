@@ -13,6 +13,21 @@ body {
   -webkit-perspective: 1000px;
           perspective: 1000px;
 }
+
+.coverflow.expand {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    z-index: 8000;
+  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);  
+}
 .coverflow__image {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -28,6 +43,18 @@ body {
   left: 50%;
   -webkit-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
+}
+
+.coverflow__image.expand {
+-webkit-transform: translateX(0px);
+    transform: translateX(0px);
+    height: 100%;
+    width: 100%;
+    left: 0;right: 0;
+    padding: 0;
+    z-index: 8000;
+  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 .coverflow__image[data-coverflow-index]:before {

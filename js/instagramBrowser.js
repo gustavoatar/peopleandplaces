@@ -82,6 +82,13 @@ function coverFlowIt() {
     }
 
     function jumpToImage(targetImage) {
+    	var targetImagePosition = targetImage.dataset.coverflowIndex;
+		coverflowPositionString = "" + coverflowPosition + "";
+
+		if( targetImagePosition	 == coverflowPositionString ){
+			targetImage.classList.add("expand");
+			targetImage.parentNode.classList.add("expand");
+		}    
         coverflowPosition = Math.min(
             coverflowImages.length,
             Math.max(1, targetImage.dataset.coverflowIndex)
@@ -258,7 +265,7 @@ function onPhotoLoaded(data, settings){
             }
 			
 			// Count photos
-			var photoCount = jQuery('.instagram-photo').size() - 1;
+			var photoCount = key;
 	            setTimeout(coverFlowIt,500)
 			
 			if( addingToList == false ){
@@ -305,7 +312,7 @@ jQuery.fn.instagramBrowser = function ( options ) {
 		speed: 700, // Sets the speed of the images fade in effect, default is 700.
 		delayInterval : 80, // Sets the interval of the delay between photos appearing, default is 80.
 		searchBox : '.searchContainer .searchBox',
-		searchQuery: 'travellandscapes'
+		searchQuery: 'worldlandscapes'
 		
 	};
 	

@@ -89,6 +89,16 @@ jQuery(document).ready(function($){
 		accessToken : '2513948.e029fea.1e7c505d3cca4f6a9738b37dee4bc47a',
 		mode : 'popular'
 	});
+
+	jQuery(".search-open").click(function(){
+		$('.searchContainer').toggleClass('fadeIn').toggleClass('hide')
+	});
+	
+	jQuery(".video-background,.video-selection").click(function(){
+		$(".video-background").toggleClass('focus');
+	});
+		
+	
 	jQuery('.final').bind("DOMSubtreeModified", function() {
 		var voiceInput = interim_span.innerHTML;
 		if (voiceInput.indexOf('Philippines') !== -1) {
@@ -98,6 +108,7 @@ jQuery(document).ready(function($){
 			jQuery('body').toggleClass('phillipines');
 			jQuery('.searchInstagram').click();
 			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/gfl4ZJFbxkE?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
+			jQuery('.lead').addClass('fadeOut').addClass('hide');
 			jQuery('#start_button').addClass('fadeOut').addClass('hide');
 
 		}
@@ -109,33 +120,59 @@ jQuery(document).ready(function($){
 			jQuery('.searchInstagram').click();
 			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/6G7rUuh74bM?controls=0&start=20&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
 			jQuery('#start_button').addClass('fadeOut').addClass('hide');
+			jQuery('.lead').addClass('fadeOut').addClass('hide');
 		}
-		if (voiceInput.indexOf('joy') !== -1) {
+		if (voiceInput.indexOf('Argentina') !== -1) {
+			jQuery('.year-entry').val('Argentina' + 'travel');
+			jQuery('#start_button').text('Getting Faces and Images');
 			jQuery('body').attr('class','');
-			jQuery('body').toggleClass('joy');
-			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/IFuFm0m2wj0?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
-			
+			jQuery('body').toggleClass('argentina');
+			jQuery('.searchInstagram').click();
+			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/d90JYK916AU?controls=0&start=20&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
+			jQuery('#start_button').addClass('fadeOut').addClass('hide');		
+			jQuery('.lead').addClass('fadeOut').addClass('hide');
+
 		}		
-		if (voiceInput.indexOf('great') !== -1 ){
+		if (voiceInput.indexOf('Israel') !== -1 ){
+			jQuery('.year-entry').val('Israel' + 'travel');
+			jQuery('#start_button').text('Getting Faces and Images');
 			jQuery('body').attr('class','');
-			jQuery('body').toggleClass('great');
-			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/bDV88ryJsfs?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
+			jQuery('body').toggleClass('israel');
+			jQuery('.searchInstagram').click();
+			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/8ukVw0iyB94?controls=0&start=10&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
+			jQuery('#start_button').addClass('fadeOut').addClass('hide');					
+			jQuery('.lead').addClass('fadeOut').addClass('hide');
 		} 
-		if (voiceInput.indexOf('happy') !== -1 ){
+		if (voiceInput.indexOf('Dubai') !== -1 ){
+			jQuery('.year-entry').val('Dubai' + 'travel');
+			jQuery('#start_button').text('Getting Faces and Images');
 			jQuery('body').attr('class','');
-			jQuery('body').toggleClass('happy');
-			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/oWgTqLCLE8k?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
-		} 		 
-		if (voiceInput.indexOf('sad') !== -1) {
+			jQuery('body').toggleClass('dubai');
+			jQuery('.searchInstagram').click();
+			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/SLaYPmhse30?controls=0&start=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
+			jQuery('#start_button').addClass('fadeOut').addClass('hide');					
+			jQuery('.lead').addClass('fadeOut').addClass('hide');
+		}  		 
+		if (voiceInput.indexOf('Peru') !== -1 ){
+			jQuery('.year-entry').val('Peru' + 'travel');
+			jQuery('#start_button').text('Getting Faces and Images');
 			jQuery('body').attr('class','');
-			jQuery('body').toggleClass('sad');
-			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/la0-5QFLr14?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
-		} 	
-		if (voiceInput.indexOf('f***') !== -1 || voiceInput.indexOf('s***') !== -1 || voiceInput.indexOf('crap') !== -1 ){
+			jQuery('body').toggleClass('peru');
+			jQuery('.searchInstagram').click();
+			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/0HT4fqyUaUw?controls=0&start=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
+			jQuery('#start_button').addClass('fadeOut').addClass('hide');					
+			jQuery('.lead').addClass('fadeOut').addClass('hide');
+		}  	
+		if (voiceInput.indexOf('Bulgaria') !== -1 ){
+			jQuery('.year-entry').val('Bulgaria' + 'travel');
+			jQuery('#start_button').text('Getting Faces and Images');
 			jQuery('body').attr('class','');
-			jQuery('body').toggleClass('pink');
-			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/6hpVlKMNHpA?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
-		} 		 			
+			jQuery('body').toggleClass('bulgaria');
+			jQuery('.searchInstagram').click();
+			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/JwjA9VpI7X0?controls=0&start=10&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
+			jQuery('#start_button').addClass('fadeOut').addClass('hide');					
+			jQuery('.lead').addClass('fadeOut').addClass('hide');
+		}   		 			
 			
 	});
 });
