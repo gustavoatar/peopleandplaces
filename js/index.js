@@ -32,7 +32,7 @@ if ('webkitSpeechRecognition' in window) {
   recognition.onstart = function() {
     recognizing = true;
     jQuery(); 
-   jQuery('.final').removeClass('hide').addClass('fadeIn');    
+    jQuery('.final').removeClass('hide').addClass('fadeIn');    
   };
 
   recognition.onerror = function(event) {
@@ -90,14 +90,35 @@ jQuery(document).ready(function($){
 		mode : 'popular'
 	});
 
-	jQuery(".search-open").click(function(){
-		$('.searchContainer').toggleClass('fadeIn').toggleClass('hide')
+	jQuery('.search-open').on('click',function(){
+		jQuery('.searchContainer').toggleClass('fadeIn').toggleClass('hide')
+		jQuery(".searchBox").focus();
 	});
 	
-	jQuery(".video-background,.video-selection").click(function(){
-		$(".video-background").toggleClass('focus');
-	});
+	jQuery('.video-background,.video-selection').on('click',function(){
+		jQuery('.video-background').toggleClass('focus');
 		
+		if ((player.isMuted() == true)){
+			player.unMute();		
+		} else {
+			player.mute();		
+		}
+
+	});
+	
+	jQuery('.nav-link.next').on('click',function(){
+			debugger;
+	});		
+
+
+	
+	jQuery('.coverflow-close').on('click',function(){
+		jQuery(this).removeClass('expand');
+		jQuery('.coverflow').removeClass('expand');
+		jQuery('.coverflow__image').removeClass('expand');
+		jQuery('.coverflow__image').css('margin','0');
+
+	});	
 	
 	jQuery('.final').bind("DOMSubtreeModified", function() {
 		var voiceInput = interim_span.innerHTML;
@@ -112,6 +133,7 @@ jQuery(document).ready(function($){
 			jQuery('#start_button').addClass('fadeOut').addClass('hide');
 
 		}
+
 		if (voiceInput.indexOf('China') !== -1) {
 			jQuery('.year-entry').val('China' + 'travel');
 			jQuery('#start_button').text('Getting Faces and Images');
@@ -121,6 +143,7 @@ jQuery(document).ready(function($){
 			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/6G7rUuh74bM?controls=0&start=20&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
 			jQuery('#start_button').addClass('fadeOut').addClass('hide');
 			jQuery('.lead').addClass('fadeOut').addClass('hide');
+			jQuery('.final').empty();
 		}
 		if (voiceInput.indexOf('Argentina') !== -1) {
 			jQuery('.year-entry').val('Argentina' + 'travel');

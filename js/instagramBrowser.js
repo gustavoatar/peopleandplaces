@@ -62,10 +62,10 @@ function coverFlowIt() {
     const coverflowImages = [...document.querySelectorAll(".coverflow__image")];
     const prevArrow = document.querySelector(".prev-arrow");
     const nextArrow = document.querySelector(".next-arrow");
-
+    
     //set indicies and initial position
     coverflowImages.forEach(function(coverflowImage, i) {
-        coverflowImage.dataset.coverflowIndex = i + 1;
+        coverflowImage.dataset.coverflowIndex = i + 1;       
     });
     let coverflowPosition = Math.floor(coverflowImages.length / 2) + 1;
     coverflowContainer.dataset.coverflowPosition = coverflowPosition;
@@ -83,11 +83,15 @@ function coverFlowIt() {
 
     function jumpToImage(targetImage) {
     	var targetImagePosition = targetImage.dataset.coverflowIndex;
+		const closeImage = document.querySelector(".coverflow-close");
+		const targetImageMargin = targetImage.clientWidth;
 		coverflowPositionString = "" + coverflowPosition + "";
 
 		if( targetImagePosition	 == coverflowPositionString ){
 			targetImage.classList.add("expand");
 			targetImage.parentNode.classList.add("expand");
+			targetImage.style.marginLeft = -targetImageMargin+"px";
+			closeImage.classList.add("expand");
 		}    
         coverflowPosition = Math.min(
             coverflowImages.length,
@@ -259,8 +263,7 @@ function onPhotoLoaded(data, settings){
 					photoCaption = "Instagram Photo";
 				}
 									
-				instagramPhoto +=    '<img src="' + photo.images.standard_resolution.url + '" class="coverflow__image">';
-
+				instagramPhoto +=    '<img src="' + photo.images.standard_resolution.url + '" class="coverflow__image" title="'+ photo.user.full_name +  '-' + photoCaption +'">';
 	            jQuery(instagramPhoto).appendTo(ibObj);
             }
 			
@@ -312,7 +315,7 @@ jQuery.fn.instagramBrowser = function ( options ) {
 		speed: 700, // Sets the speed of the images fade in effect, default is 700.
 		delayInterval : 80, // Sets the interval of the delay between photos appearing, default is 80.
 		searchBox : '.searchContainer .searchBox',
-		searchQuery: 'worldlandscapes'
+		searchQuery: 'globaltravel'
 		
 	};
 	
@@ -342,9 +345,11 @@ jQuery.fn.instagramBrowser = function ( options ) {
 			} else {
 				instagramSearch(settings);
 			}
+			jQuery('.searchContainer').addClass('hide')
 				
-			
 		});
+		
+		
 		
 		jQuery(document).on("click", ".seachInstagramLoadMore", function(){
 			if( jQuery(settings.searchBox).attr("rel") == "user" ){
