@@ -106,12 +106,6 @@ jQuery(document).ready(function($){
 
 	});
 	
-	jQuery('.nav-link.next').on('click',function(){
-			debugger;
-	});		
-
-
-	
 	jQuery('.coverflow-close').on('click',function(){
 		jQuery(this).removeClass('expand');
 		jQuery('.coverflow').removeClass('expand');
@@ -119,6 +113,12 @@ jQuery(document).ready(function($){
 		jQuery('.coverflow__image').css('margin','0');
 
 	});	
+	
+	jQuery('.previous').on('click',function(){
+		debugger;
+
+	});	
+		
 	
 	jQuery('.final').bind("DOMSubtreeModified", function() {
 		var voiceInput = interim_span.innerHTML;
@@ -133,7 +133,6 @@ jQuery(document).ready(function($){
 			jQuery('#start_button').addClass('fadeOut').addClass('hide');
 
 		}
-
 		if (voiceInput.indexOf('China') !== -1) {
 			jQuery('.year-entry').val('China' + 'travel');
 			jQuery('#start_button').text('Getting Faces and Images');
@@ -142,8 +141,9 @@ jQuery(document).ready(function($){
 			jQuery('.searchInstagram').click();
 			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/6G7rUuh74bM?controls=0&start=20&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
 			jQuery('#start_button').addClass('fadeOut').addClass('hide');
-			jQuery('.lead').addClass('fadeOut').addClass('hide');
-			jQuery('.final').empty();
+			jQuery('.lead').addClass('fadeOut').addClass('hide');		
+			jQuery('.content').addClass('fadeIn').removeClass('hide');		
+	
 		}
 		if (voiceInput.indexOf('Argentina') !== -1) {
 			jQuery('.year-entry').val('Argentina' + 'travel');

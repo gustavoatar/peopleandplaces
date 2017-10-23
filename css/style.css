@@ -1187,6 +1187,18 @@ box-shadow:         0px 1px 10px 5px rgba(50, 50, 50, 0.16);
 	z-index: 8003;
 }
 
+.infobox {
+	width: 100%;
+}
+
+.infobox ul{
+	list-style: none;
+}
+
+.infobox a, .infobox a:visited {
+	color: #337ab7;
+}
+
 .final {
 	font-size: 30px;
 	width: 100%;
