@@ -80,23 +80,6 @@ body {
           
 }
 
-.coverflow__image[title]:hover:after {
-  content: attr(title);
-  padding: 4px 8px;
-  color: #333;
-  position: absolute;
-  left: 0;
-  top: 100%;
-  z-index: 20;
-  white-space: nowrap;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  -moz-box-shadow: 0px 0px 4px #222;
-  -webkit-box-shadow: 0px 0px 4px #222;
-  box-shadow: 0px 0px 4px #222;
-	background: rgba(0,0,0,.9);
-	}
 
 .coverflow .coverflow__image.expand {
 -webkit-transform: translateX(0px) !important;

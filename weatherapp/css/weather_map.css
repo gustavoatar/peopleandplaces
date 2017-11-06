@@ -1,0 +1,193 @@
+
+
+.active{
+    display: inline-block !important;
+}
+.todayBox {
+    text-align: center;
+	border-bottom: 1px solid #eee;
+}
+
+#cloudBack{
+	text-align: center;
+}
+
+#weatherContainer{
+	max-width: 800px;
+	overflow: hidden;
+	margin: 600px auto 0px auto;
+	padding-bottom: 40px;
+}
+
+#weatherBoxes {
+    width: 800px;
+    padding:0 2rem 2rem 2rem;
+    background: rgba(0,0,0,.8);
+    color: #fff;
+    margin: 0px;
+    text-align: center;
+     z-index: 88;
+    position: relative;   
+}
+
+.threeDayBox {
+	margin: 50px;
+}
+
+.fiveDayBox, .tenDayBox { display: none; }
+
+.gm-style-iw { padding-left: 10px; }
+
+.gm-style-iw h2, .gm-style-iw p{ 
+	color: #222;
+	text-shadow: none;
+	text-align: center;
+}
+
+
+#map {
+    height: 100vh;
+    width: 100vw;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position: fixed !important;
+	z-index: -100;
+	opacity: 0;
+	transition: 1s all;
+}
+#map.showme {
+    height: 100vh;
+    width: 100vw;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position: fixed !important;
+	z-index:0;
+	opacity: 1;
+	transition: 1s all;
+}
+
+header.fix-top {
+	position: fixed;
+	top: 30px; left:0; right: 0;
+	width: 100vw;
+	height: 80px;
+	z-index: 99;
+}
+
+
+#leftSearch {
+    text-align: left;
+    width: 44%;
+}
+#rightSearch {
+    text-align: right;
+    width: 54%;
+}
+#searchContainer{
+    width: 100%;
+    padding: 2rem;
+}
+
+#selectorTabs { display: none;}
+
+#daySelector {
+    color: #fff;
+
+}
+#daySelector>li {
+
+}
+#daySelector>li:hover {
+    background: white; 
+    color: black;
+}
+.todayBox>h3{
+    margin: 0 300px 0 0;
+}
+.todayInfo>img {
+    width: 100px;
+    height: 100px;
+}
+.todayInfo{
+    display: inline-block;
+    width: 30%;
+}
+#todayLeft, #todayCenter {
+   vertical-align: top;
+}
+.todayInfo>p {
+    font-size: 1em;
+    margin: 0 0 18px 0;
+}
+.todayInfo>h3{
+    font-size: 1.4em;
+}
+#todayRight>h3{
+    margin: 0 auto;
+}
+#todayLeft>h3{
+    margin: 0 0 24px 0;
+}
+.weatherBoxDivs h2{
+    font-size: 1.6em;
+}
+
+
+.todayBox h2 {
+    font-size: 2.2em;
+    padding: 1rem;
+}
+
+
+@media screen and (max-width: 1180px){
+    #rightSearch{
+        display: none;
+    }
+    #leftSearch{
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 1000px){
+    #cloudBack{
+        background-image: none;
+    }
+}
+@media screen and (max-width: 840px){
+
+}
+@media screen and (max-width: 720px){
+    .fiveTens{
+        width: 30%;
+    }
+    .weatherBoxDivs h2{
+        font-size: 1.6em;
+    }
+}
+
+@media screen and (max-width: 600px){
+
+    #appContainer{
+        width: 100%;
+    }
+    #weatherContainer{
+        width: 100%;
+    }
+    #map{
+        width: 100%;
+    }
+    .three{
+       width: 80%;
+    }
+    .fiveTens{
+       width: 45%;
+    }
+    #daySelector>li {
+        margin: 0 2%;
+    }
+}

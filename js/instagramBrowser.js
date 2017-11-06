@@ -1,16 +1,4 @@
-/*
- * jQuery Instagram Browser
- * Version: 1.0
- *
- * Author: Chris Rivers
- * http://chrisriversdesign.com
- *
- *
- * Changelog: 
- * Version: 1.0
- *
- */
-
+// Instagram feed
 // Global
 var ibObj;
 var instagramBrowserNextMax;
@@ -53,7 +41,8 @@ function instagramSearch(settings){
     var param = {access_token:access_token};
 
 	var searchQuery = jQuery(".searchBox").val().replace(/ /g,'');
-		
+	jQuery(".maps-search-box").val(searchQuery);
+	jQuery('#searchBtn').focus().click();
     searchCMD(param, settings, searchQuery);
 }
 
@@ -67,19 +56,33 @@ function coverFlowIt() {
     coverflowImages.forEach(function(coverflowImage, i) {
         coverflowImage.dataset.coverflowIndex = i + 1;       
     });
-    let coverflowPosition = Math.floor(coverflowImages.length / 2) + 1;
+    let coverflowPosition = Math.floor(coverflowImages.length / 2) - 8;
     coverflowContainer.dataset.coverflowPosition = coverflowPosition;
 
     //navigation functions
-    function viewPrevImage() {
+   viewPrevImage = function () {
         coverflowPosition = Math.max(1, coverflowPosition - 1);
         coverflowContainer.dataset.coverflowPosition = coverflowPosition;
     }
 
-    function viewNextImage() {
+    viewNextImage = function () {
         coverflowPosition = Math.min(coverflowImages.length, coverflowPosition + 1);
         coverflowContainer.dataset.coverflowPosition = coverflowPosition;
     }
+    // fix this shit
+    slideshow = function(targetImage) {
+		coverflowPositionString = "" + coverflowPosition + "";
+        coverflowPosition = Math.min(coverflowImages.length, coverflowPosition + 1);
+        coverflowContainer.dataset.coverflowPosition = coverflowPosition;    
+		if( coverflowPosition == 20 ){
+		debugger;
+			clearTimeout(slideshow);
+			jQuery();
+			jQuery('.seachInstagramLoadMore').trigger('click');
+			
+		} 	
+    } 
+    
 
     function jumpToImage(targetImage) {
     	var targetImagePosition = targetImage.dataset.coverflowIndex;
@@ -89,7 +92,7 @@ function coverFlowIt() {
 
 		if( targetImagePosition	 == coverflowPositionString ){
 			targetImage.classList.add("expand");
-			targetImage.parentNode.classList.add("expand");
+			targetImage.parentNode.parentNode.classList.add("expand");
 			targetImage.style.marginLeft = -targetImageMargin+"px";
 			closeImage.classList.add("expand");
 		}    
@@ -113,7 +116,12 @@ function coverFlowIt() {
         } else if (evt.which === 39) {
             //right arrow
             viewNextImage();
-        }
+        } else if (evt.which == 27) {
+				jQuery('.coverflow-close').removeClass('expand');
+				jQuery('.coverflow').removeClass('expand');
+				jQuery('.coverflow__image').removeClass('expand');
+				jQuery('.coverflow__image').css('margin','0');
+		}
     });
 }
 
@@ -263,7 +271,7 @@ function onPhotoLoaded(data, settings){
 					photoCaption = "Instagram Photo";
 				}
 									
-				instagramPhoto +=    '<img src="' + photo.images.standard_resolution.url + '" class="coverflow__image" title="'+ photo.user.full_name +  '-' + photoCaption +'">';
+				instagramPhoto +=    '<a href="#" class="caption caption-3"  data-description="' + photoCaption +'" data-title="'+ photo.user.full_name +'"><img src="' + photo.images.standard_resolution.url + '" class="coverflow__image" title="' + photoCaption + ' - ' + photo.user.full_name +'"></a>';
 	            jQuery(instagramPhoto).appendTo(ibObj);
             }
 			
@@ -315,7 +323,7 @@ jQuery.fn.instagramBrowser = function ( options ) {
 		speed: 700, // Sets the speed of the images fade in effect, default is 700.
 		delayInterval : 80, // Sets the interval of the delay between photos appearing, default is 80.
 		searchBox : '.searchContainer .searchBox',
-		searchQuery: 'globaltravel'
+		searchQuery: 'sunset'
 		
 	};
 	
@@ -377,6 +385,7 @@ jQuery.fn.instagramBrowser = function ( options ) {
 				jQuery('.searchInstagram').focus().click();
 			}
 		});
+		
 		//hide additional details for hover
 		// jQuery(document).on({
 // 			mouseenter: function() {
