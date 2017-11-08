@@ -51,6 +51,17 @@ function coverFlowIt() {
     const coverflowImages = [...document.querySelectorAll(".coverflow__image")];
     const prevArrow = document.querySelector(".prev-arrow");
     const nextArrow = document.querySelector(".next-arrow");
+	jQuery();
+	jQuery( ".caption" ).on( "swipeleft", viewPrev);
+	jQuery( ".caption" ).on( "swiperight", viewNext);
+
+	function viewPrev( event ){
+		viewPrevImage();
+	}
+	
+	function viewNext( event ){
+		viewNextImage();
+	}	
     
     //set indicies and initial position
     coverflowImages.forEach(function(coverflowImage, i) {
@@ -71,15 +82,9 @@ function coverFlowIt() {
     }
     // fix this shit
     slideshow = function(targetImage) {
-		coverflowPositionString = "" + coverflowPosition + "";
-        coverflowPosition = Math.min(coverflowImages.length, coverflowPosition + 1);
-        coverflowContainer.dataset.coverflowPosition = coverflowPosition;    
-		if( coverflowPosition == 20 ){
-		debugger;
-			clearTimeout(slideshow);
-			jQuery();
+    	jQuery('.next-arrow').trigger('click'); 
+		if( coverflowPosition === 20 ){
 			jQuery('.seachInstagramLoadMore').trigger('click');
-			
 		} 	
     } 
     
@@ -323,7 +328,7 @@ jQuery.fn.instagramBrowser = function ( options ) {
 		speed: 700, // Sets the speed of the images fade in effect, default is 700.
 		delayInterval : 80, // Sets the interval of the delay between photos appearing, default is 80.
 		searchBox : '.searchContainer .searchBox',
-		searchQuery: 'sunset'
+		searchQuery: 'earthsunset'
 		
 	};
 	

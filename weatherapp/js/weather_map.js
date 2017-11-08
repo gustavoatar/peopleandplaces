@@ -47,13 +47,14 @@ $(document).ready(function () {
                 lat: parseFloat(lat),
                 lng: parseFloat(lng)
             },           
-            zoom: 6,
+            zoom: 4,
             scrollwheel: false,	
             disableDefaultUI: true,
 			mapTypeControl: true,
 			mapTypeControlOptions: {
-				style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-				position: google.maps.ControlPosition.BOTTOM_CENTER
+            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+			position: google.maps.ControlPosition.LEFT_TOP,
+            mapTypeIds: ['roadmap','terrain','hybrid','satellite']				
 			},
 			zoomControl: true,
 			zoomControlOptions: {
@@ -61,7 +62,7 @@ $(document).ready(function () {
 			},
 			streetViewControl: true,
 			streetViewControlOptions: {
-				position: google.maps.ControlPosition.LEFT_TOP
+				position: google.maps.ControlPosition.BOTTOM_CENTER
 			},
             styles: [
             {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
@@ -151,17 +152,26 @@ $(document).ready(function () {
 
 		google.maps.event.addListener(thePanorama, 'visible_changed', function() {
 			if (thePanorama.getVisible() === true) {
-				jQuery('#weatherBoxes').addClass('hide');
-				jQuery('.coverflow').addClass('hide');
+				var locationName = thePanorama.location.shortDescription;
+				jQuery('.year-entry').val(locationName);
+				jQuery('.searchInstagram').click();
+				jQuery('#start_button').addClass('hide');
+				jQuery('#weatherContainer').removeClass('hide');
+				jQuery('.coverflow').addClass('panoramic');
 				jQuery('.video-background').addClass('hide');
 				jQuery('.next-arrow, .prev-arrow, .search-open').addClass('hide');
+				jQuery('.video-control').addClass('hide');
+				jQuery('.video-control-play').addClass('hide');
+				jQuery('.coverflow').removeClass('hide');
 
 				
 			} else if(!thePanorama.getVisible()) {
-				jQuery('.next, .prev, .search-open').removeClass('hide');
-				jQuery('#weatherBoxes').removeClass('hide');
-				jQuery('.coverflow').removeClass('hide');
-				jQuery('.video-background').removeClass('hide');
+				jQuery('#start_button').removeClass('hide');
+				jQuery('.next-arrow, .prev-arrow, .search-open').removeClass('hide');
+				jQuery('.coverflow').removeClass('panoramic');
+				jQuery('#weatherContainer').addClass('hide');
+				jQuery('.video-control').removeClass('hide');
+				jQuery('.video-control-play').removeClass('hide');
 
 			}
 
@@ -171,7 +181,6 @@ $(document).ready(function () {
 		google.maps.event.addListener( map, 'maptypeid_changed', function() { 
 			document.getElementById( "map" ).value = map.getMapTypeId();
 			// add classes to remove video
-			debugger;
 			if(this.mapTypeId === 'hybrid' || this.mapTypeId === 'terrain' || this.mapTypeId === 'satellite'){
 				jQuery('.video-background').addClass('hide');
 			} 
@@ -247,7 +256,7 @@ function loadWeather() {
                 var minTemp = Math.round(data.list[i].temp.min);
                 var iconUrl = "http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png";
                 appendStr +=("<h2>" + day + "</h2>");
-                appendStr += ("<h3>" + maxTemp + "&deg/" + minTemp + "&deg</h3>");
+                appendStr += ("<h4>" + maxTemp + "&deg/" + minTemp + "&deg</h4>");
                 appendStr += ("<img src='" + iconUrl + "' alt='Icon'>");
                 appendStr += ("<p><strong>" + data.list[i].weather[0].main + ":</strong> " + data.list[i].weather[0].description + "</p>");
                 appendStr += ("<p><strong>Humidity: </strong>" + data.list[i].humidity + "</p>");
@@ -257,9 +266,9 @@ function loadWeather() {
                 $(idVar).html(appendStr);  //inserting new weather
 
                 // reformated weather string for today box
-                appendStrLeft += ("<h3>High: " + Math.round(data.list[0].temp.max) + "&deg</h3>");
-                appendStrLeft += ("<h3>Low: " + Math.round(data.list[0].temp.min) + "&deg</h3>");
-                appendStrRight += ("<h3><strong>" + data.list[0].weather[0].main + ":</strong> " + data.list[0].weather[0].description + "</h3>");
+                appendStrLeft += ("<h4>High: " + Math.round(data.list[0].temp.max) + "&deg</h4>");
+                appendStrLeft += ("<h4>Low: " + Math.round(data.list[0].temp.min) + "&deg</h4>");
+                appendStrRight += ("<h4><strong>" + data.list[0].weather[0].main + ":</strong> " + data.list[0].weather[0].description + "</h4>");
                 appendStrRight += ("<img src='http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png' alt='Icon'>");
                 appendStrCenter += ("<p><strong>Humidity: </strong>" + data.list[0].humidity + "</p>");
                 appendStrCenter += ("<p><strong>Wind: </strong>" + data.list[0].speed + "</p>");
@@ -268,7 +277,7 @@ function loadWeather() {
                 $("#todayLeft").html(appendStrLeft);  //inserting new weather
                 $('#todayCenter').html(appendStrCenter);
                 $("#todayRight").html(appendStrRight);
-                infoContent = "<h2 class='center-text'>" + data.city.name + ',&nbsp;'+ data.city.country +"</h2><img src='" + iconUrl + "' alt='Icon' class='center-block' height='80'>" + "<h2 class='center-text'>" + Math.round(data.list[0].temp.max) + "&deg/" + Math.round(data.list[0].temp.min) + "&deg" + "</h2><p class='small'>"+'Population '+""+ data.city.population.toLocaleString() +"</p>";
+                infoContent = "<h2 class='center-text'>" + data.city.name + ',&nbsp;'+ data.city.country +"</h2><img src='" + iconUrl + "' alt='Icon' class='center-block' height='80'>" + "<h2 class='center-text'>" + Math.round(data.list[0].temp.max) + "&deg/" + Math.round(data.list[0].temp.min) + "&deg" + "</h2><br /><p>"+'Population '+""+ data.city.population.toLocaleString() +"</p>";
                 
                 infowindow.setContent(infoContent);
             });

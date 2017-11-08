@@ -17,25 +17,53 @@
 }
 
 #weatherContainer{
-	max-width: 800px;
-	overflow: hidden;
-	margin: 600px auto 0px auto;
-	padding-bottom: 40px;
+    max-width: 80vw;
+    overflow: hidden;
+    margin: 0 auto;
+    padding-bottom: 0;
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    z-index: 99;
+    right: 0;
+    box-shadow:0 0 30px rgba(0,0,0,.7);
 }
 
+.video-control:visited, .video-control:link {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	min-height: 44px;
+	min-width: 44px;
+	text-align: center;
+	color: white;
+	z-index: 99;
+	display: block;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.video-control-play:visited, .video-control-play:link {
+	position: fixed;
+	bottom: 20px;
+	right: 68px;
+	min-height: 44px;
+	min-width: 44px;
+	text-align: center;
+	color: white;
+	z-index: 99;
+	display: block;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+
 #weatherBoxes {
-    width: 800px;
-    padding: 0 2rem 2rem 2rem;
     background: rgba(0,0,0,.8);
     color: #fff;
-    margin: 0 0 140px 0;
     text-align: center;
-    z-index: 88;
-    position: relative;
-    overflow: hidden;
-    height: 300px;
-    transition: .5s all ease-in;  
-    cursor: pointer;
+    height: 228px;
+    transition: .5s all ease-in;
 }
 
 #weatherBoxes::after{
@@ -59,6 +87,7 @@
     text-align: center;
     border: 1px solid #444;
     background: #fff;
+    display: none;
 }
 
 #weatherBoxes.grow::after{
@@ -72,7 +101,7 @@
 }
 
 .threeDayBox {
-padding: 20px 20px 0px 50px;
+padding: 0 20px;
 }
 
 .fiveDayBox, .tenDayBox { display: none; }
@@ -85,6 +114,78 @@ padding: 20px 20px 0px 50px;
 	text-align: center;
 }
 
+
+.gm-iv-back-icon-background {
+	background: none !important;
+	position:relative;
+	width: 44px;
+	height: 44px;
+}
+
+.gm-iv-back {
+    height: 44px !important;
+    width: 44px !important;
+}
+
+.gm-iv-back-icon {
+
+    width: 44px !important;
+    height: 44px !important;
+    background-position: 0px 0px !important;
+}
+
+.gm-iv-close {
+	width: 44px !important;
+    height: 64px !important;
+    margin-top: 0px !important;
+    z-index: 9999 !important;
+    cursor: pointer !important;
+}
+
+.gm-iv-profile-link, .gm-iv-long-address-description {
+    font-weight: 200 !important;
+    font-size: 26px !important;
+    margin-left: 23px !important;
+    margin-top: 6px !important;
+    text-transform: capitalize !important;
+	max-width: unset;
+
+}
+
+.gm-iv-short-address-description { display: none !important; }
+
+.gm-iv-container {
+    margin-top: 400px !important;
+    width: 55px !important;
+    padding-left: 10px !important;
+ }
+
+.gm-iv-address {
+    margin-top: 400px !important;
+}
+
+.gm-iv-address-description {
+    min-width:unset !important;
+    max-width: unset !important;
+}
+
+.gm-iv-profile-url { display: block !important;}
+
+.gm-iv-long-address-description { text-overflow: unset;}
+
+.gm-iv-back-icon-background::after {
+    content: "\f104";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    color: #fff;
+    font-size: 46px;
+    text-align: center;
+    position: absolute;
+    top: 0px;
+    left: 0;
+}
 
 #map {
     height: 100vh;
@@ -119,9 +220,8 @@ header.fix-top {
 	height: 80px;
 	z-index: 99;
 }
-
 .gm-iv-address-link a, .gm-iv-marker, .gm-iv-vertical-separator { display: none !important; }
-.gm-iv-address{ height: auto !important;}
+.gm-iv-address{ height: auto !important;  }
 #leftSearch {
     text-align: left;
     width: 44%;

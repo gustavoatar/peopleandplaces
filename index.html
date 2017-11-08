@@ -37,15 +37,16 @@
 		<p class="small text-center">Powered by MRM//McCANN World Heritage</p>
 	</header>
 	<br />
-	<a href="#" id="start_button" class="uppercase bold" onclick="startDictation(event)"> Ask me <i aria-hidden="true" class="fa fa-microphone fa-3 dictation"></i></a></h3>
-	<br />
 	<p class="lead center-text typed-out"></p>
+	<p class="lead center-text hide retry-text"></p>
+	<br />
+	<a href="#" id="start_button" class="uppercase bold" onclick="startDictation(event)"> Ask me <i aria-hidden="true" class="fa fa-microphone fa-3 dictation"></i></a></h3>
 	<br />
 	<div class="searchContainer margin-top hide animated">
 		<label>Search the Worlds People and Places</label>
 		<input class="searchBox year-entry" name="search" onfocus="this.value=''" rel="hashtag" type="text" value="Search for people and places"> <a class="searchInstagram btn btn-default center-text">Search</a>
 	</div>	
-	<div class="row animated speech-wave ">
+	<div class="row animated speech-wave">
 		<div class="col-md-12">	
 			<div class="center-block center-text guest" style="float: none;">
 				<div id="results" class="row">
@@ -101,7 +102,7 @@
 </div>
 <div class="video-background animate">
     <div class="video-foreground">
-      <iframe id="ytplayer" class="movie" src="https://www.youtube.com/embed/QknbgQrRwIY?controls=0&start=10&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1" frameborder="0" allowfullscreen target="_parent"></iframe>
+      <iframe id="ytplayer" class="movie" src="https://www.youtube.com/embed/zCNCVXjctJc?controls=0&start=70&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1" frameborder="0" allowfullscreen target="_parent"></iframe>
 	</div>
 </div>
 <br />
@@ -131,7 +132,7 @@
 			</div>
 		</div>
 
-		<div id="weatherContainer">
+		<div id="weatherContainer" class="animated hide">
 
 			<div id="selectorTabs">
 				<ul id="daySelector">
@@ -143,16 +144,17 @@
 			</div>
 
 			<div id="weatherBoxes">
-				<div class="weatherBoxDivs todayBox">
+				<div class="weatherBoxDivs todayBox hide">
 				<br />
 					<h2 class="bold uppercase">Today's Forecast</h2>
 					<br />
 					<div class="todayInfo" id="todayLeft"></div>
 					<div class="todayInfo" id="todayCenter"></div>
 					<div class="todayInfo" id="todayRight"></div>
-					<h3 class="bold uppercase text-center">3 Day Forecast</h3>
 				</div>
-				
+				<br />
+				<h3 class="bold uppercase text-center">3 Day Forecast</h3>
+				<br />
 				<div class="weatherBoxDivs threeDayBox fiveDayBox tenDayBox active three" id="day0"></div>
 				<div class="weatherBoxDivs threeDayBox fiveDayBox tenDayBox active three" id="day1"></div>
 				<div class="weatherBoxDivs threeDayBox fiveDayBox tenDayBox active three" id="day2"></div>
@@ -165,11 +167,15 @@
 				<div class="weatherBoxDivs tenDayBox" id="day9"></div>
 			</div>
 		</div>
+		<a class="video-control animated" href="#"><i class="fa fa-pause-circle-o fa-3x" aria-hidden="true"></i></a>
+		<a class="video-control-play animated" href="#"><i class="fa fa-play-circle-o fa-3x" aria-hidden="true"></i></a>
 
-		<div id="map"></div>
+		<div id="map">
+		</div>
 	</div>
 </div>
 	<script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/jquery.mobile.custom.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/dateFormat.js"></script>
 	<script type="text/javascript" src="js/instagramBrowser.js"></script>

@@ -875,58 +875,44 @@ i.huge-icon { font-size: 52px; margin-bottom: -5px;  }
 
 }
 
-/* 
 
-
-.expand .caption {
-	margin: 10px;
-	min-width: 100vw;
-	min-height: 100vh;
-	overflow: hidden;
+/*coverflow and video blur*/
+.video-background, .coverflow {
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out; 
 }
 
-.expand .caption img {
-	max-width:480px;
-}
-
-
-.expand .caption-2::before,
-.expand .caption-2::after {
-	opacity: 0;
-	position: absolute;
-	width: 100%;
-	color: #fff;
-	padding: 20px;
-	-webkit-transition: opacity 0.3s;
-	-moz-transition: opacity 0.3s;
-	transition: opacity 0.3s;
-}
-
-.expand .caption-2::before {
-	content: attr(data-title);
+.coverflow.panoramic {
+	position: fixed;
 	top: 0;
-	height: 30%;
-	background: #a21f00;
-	font-size: 20px;
-	font-weight: 300;
+	width: 100vw;
+	left: 0;
+	margin-top: 0;
+	margin-left: -39vw;
+	z-index: 9999;
+	-moz-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	-ms-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	transform: scale(0.4, 0.4);  
+
 }
 
-.expand .caption-2::after {
-	content: '\201C' attr(data-description) '\201D';
-	top: 30%;
-	height: 70%;
-	background: #db2e00;
-	font-size: 16px;
-	text-align: right;
+.blur {
+    -webkit-filter: blur(20px);
+    -ms-filter: blur(20px);
+    -o-filter: blur(20px);
+    filter: blur(20px);
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out; 
 }
-
-.expand .caption-2:hover::before,
-.expand .caption-2:hover::after {
-	opacity: 1;
-}
- */
-
-
 
 /* 
 start button */
@@ -949,6 +935,14 @@ start button */
     background: #000;
 	-webkit-box-shadow: 2px 2px 12px 4px rgba(0,0,0,.44);
 	box-shadow: 2px 2px 12px 4px rgba(0,0,0,.44);
+}
+
+#start_button.fix {
+	position: fixed;
+	bottom: 180px;
+	left: 50%;
+	margin-left: -68px;
+		
 }
 
 #start_button:hover {
@@ -1127,7 +1121,7 @@ box-shadow:         0px 1px 10px 5px rgba(50, 50, 50, 0.16);
 
 .final {
 	color: #fff;
-	font-size: 22px;
+	font-size: 18px;
 	width: 320px;
 	padding: 20px;
 	transition: .3s all;
@@ -1136,6 +1130,13 @@ box-shadow:         0px 1px 10px 5px rgba(50, 50, 50, 0.16);
 	box-shadow: 2px 2px 12px 4px rgba(0,0,0,.33);	
 	background: rgba(0,0,0,.87);
 	border: 1px solid #999;	
+}
+
+.final::before {
+	position: absolute;
+	top: -40px;
+	right: 60px;
+	content: 'Previous Known Request';
 }
 
 .final span {
@@ -1188,8 +1189,10 @@ box-shadow:         0px 1px 10px 5px rgba(50, 50, 50, 0.16);
 .video-background.blend {
 	mix-blend-mode: color-dodge;
 	opacity: .4;
-	  pointer-events: none;
-	  z-index: 1;
+	pointer-events: none;
+	z-index: 1;
+	-webkit-transition: all .4s ease-in;
+	transition: all .4s ease-in;	  
 }
 
 .video-selection{
@@ -1202,9 +1205,9 @@ box-shadow:         0px 1px 10px 5px rgba(50, 50, 50, 0.16);
     background: transparent;
     opacity: 0;
     cursor: nwse-resize; 
-   -webkit-transition: all 1 ease-in;
-  transition: all 1 ease-in;  
-  cursor: zoom-out;     
+   -webkit-transition: all .4s ease-in;
+  	transition: all .4s ease-in;
+  	cursor: zoom-out;     
 }
 
 .video-selection.two{
