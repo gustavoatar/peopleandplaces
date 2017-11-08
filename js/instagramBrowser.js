@@ -82,6 +82,7 @@ function coverFlowIt() {
     }
     // fix this shit
     slideshow = function(targetImage) {
+    debugger;
     	jQuery('.next-arrow').trigger('click'); 
 		if( coverflowPosition === 20 ){
 			jQuery('.seachInstagramLoadMore').trigger('click');

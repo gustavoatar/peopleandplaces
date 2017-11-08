@@ -47,7 +47,7 @@ $(document).ready(function () {
                 lat: parseFloat(lat),
                 lng: parseFloat(lng)
             },           
-            zoom: 4,
+            zoom: 6,
             scrollwheel: false,	
             disableDefaultUI: true,
 			mapTypeControl: true,
@@ -148,7 +148,7 @@ $(document).ready(function () {
         //create map
         map = new google.maps.Map(document.getElementById("map"), mapOptions, {streetViewControl: true});
         
-		var thePanorama = map.getStreetView();
+		var thePanorama = map.getStreetView(address);
 
 		google.maps.event.addListener(thePanorama, 'visible_changed', function() {
 			if (thePanorama.getVisible() === true) {
@@ -177,6 +177,9 @@ $(document).ready(function () {
 
 		});   
 		
+		google.maps.event.addListener(map,'zoom_changed',function (event) {
+				jQuery('.video-background').addClass('hide');
+		});
 		     
 		google.maps.event.addListener( map, 'maptypeid_changed', function() { 
 			document.getElementById( "map" ).value = map.getMapTypeId();

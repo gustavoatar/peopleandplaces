@@ -36,6 +36,8 @@ if ('webkitSpeechRecognition' in window) {
     jQuery('.final').removeClass('hide').addClass('fadeIn');    
     jQuery('.video-background,.coverflow').addClass('blur');    
 	jQuery('#weatherContainer').addClass('hide');
+	jQuery("#map").addClass('hide').removeClass('showme');
+	
 	jQuery('.next-arrow, .prev-arrow, header, .search-open, .video-control, .video-control-play').addClass('hide');
   };
 
@@ -44,6 +46,9 @@ if ('webkitSpeechRecognition' in window) {
   };
 
   recognition.onend = function() {	
+    recognition.stop();
+    recognizing = false;  
+	jQuery("#map").removeClass('hide').addClass('showme');
 	jQuery('.wave-form').addClass('hide');
 	jQuery('.next-arrow, .prev-arrow, header, .search-open, .video-control, .video-control-play').removeClass('hide');
     jQuery('.video-background,.coverflow').removeClass('blur');    
@@ -51,7 +56,6 @@ if ('webkitSpeechRecognition' in window) {
 	jQuery('#results').addClass('hide');
 	jQuery('#start_button').removeClass('fadeOut').removeClass('hide');
 	jQuery('#start_button').addClass('fadeIn').html('Ask Me <i aria-hidden="true" class="fa fa-microphone fa-3 dictation"></i>');  
-    recognizing = false;
   };
 
   recognition.onresult = function(event) {
@@ -60,7 +64,6 @@ if ('webkitSpeechRecognition' in window) {
       if (event.results[i].isFinal) {              
         final_transcript += event.results[i][0].transcript;   
         recognition.onend();
-     
       } else {    
         interim_transcript += event.results[i][0].transcript;       
       }     
@@ -118,7 +121,7 @@ jQuery(document).ready(function($){
 	);	
 	var typedretry = new Typed('.retry-text', 
 	{
-		strings: ['What other country would you like to visit?'],
+		strings: ['Where else would you like to visit?'],
 		loop: false,
 		loopCount: 1,
 		typeSpeed: 55,
@@ -369,7 +372,13 @@ jQuery(document).ready(function($){
 // 			jQuery('.retry-text').removeClass('hide').addClass('fadeIn');  
 // 		}							
 		
-		
+		if (voiceInput.search('/([A-Za-z]+(?: [A-Za-z]+)*),? ([A-Za-z]{2})/')){
+			var cityName = voiceInput.replace(/\s/g, '').replace(/[a-z]+/,'');
+			jQuery('.year-entry').val(cityName + 'travel');
+			jQuery('.typed-out').addClass('fadeOut').addClass('hide');
+			jQuery('.retry-text').removeClass('hide').addClass('fadeIn'); 
+			jQuery('.searchInstagram').click();			
+		}
 		
 		if (voiceInput.indexOf('previous') !== -1 ){
 			viewPrevImage();
