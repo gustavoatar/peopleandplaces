@@ -82,7 +82,6 @@ function coverFlowIt() {
     }
     // fix this shit
     slideshow = function(targetImage) {
-    debugger;
     	jQuery('.next-arrow').trigger('click'); 
 		if( coverflowPosition === 20 ){
 			jQuery('.seachInstagramLoadMore').trigger('click');
@@ -329,7 +328,7 @@ jQuery.fn.instagramBrowser = function ( options ) {
 		speed: 700, // Sets the speed of the images fade in effect, default is 700.
 		delayInterval : 80, // Sets the interval of the delay between photos appearing, default is 80.
 		searchBox : '.searchContainer .searchBox',
-		searchQuery: 'earthsunset'
+		searchQuery: 'earth'
 		
 	};
 	
