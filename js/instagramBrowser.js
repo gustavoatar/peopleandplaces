@@ -309,7 +309,7 @@ function onPhotoLoaded(data, settings){
 			});
 
         } else {
-            alert('empty');
+			// something to do for errors
         }
 
     } else {
@@ -328,7 +328,7 @@ jQuery.fn.instagramBrowser = function ( options ) {
 		speed: 700, // Sets the speed of the images fade in effect, default is 700.
 		delayInterval : 80, // Sets the interval of the delay between photos appearing, default is 80.
 		searchBox : '.searchContainer .searchBox',
-		searchQuery: 'earth'
+		searchQuery: 'earthbeauty'
 		
 	};
 	
