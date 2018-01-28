@@ -104,12 +104,12 @@ function startDictation(event) {
 
 jQuery(document).ready(function($){
 	jQuery('.demo').instagramBrowser({
-		accessToken : '2513948.e029fea.1e7c505d3cca4f6a9738b37dee4bc47a',
+		accessToken : '2513948.e029fea.3b6f532fa25d49278679e27c0430af0e',
 		mode : 'popular'
 	});
 	var typed = new Typed('.typed-out', 
 	{
-		strings: ['Learn about the world in a visual way, ask or search...', 'Tap - Ask me and say a country name - to get started'],
+		strings: ['Learn about the world in a visual way'],
 		loop: true,
 		loopCount: 3,
 		typeSpeed: 55,

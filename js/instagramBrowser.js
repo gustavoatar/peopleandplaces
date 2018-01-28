@@ -234,8 +234,8 @@ function onPhotoLoaded(data, settings){
 	
 	// Store Next Page of Results... // next_url
 	if( data.pagination ){
-		if( data.pagination.next_max_id ){
-			instagramBrowserNextMax = data.pagination.next_max_id;
+		if( data.pagination.max_tag_id){
+			instagramBrowserNextMax = data.pagination.max_tag_id;
 		} else {
 			instagramBrowserNextMax = "Empty";
 		}	
@@ -323,12 +323,12 @@ jQuery.fn.instagramBrowser = function ( options ) {
 	------------------------------*/
 	var settings = {
 		mode : 'user', // This sets the mode to either "user" or "popular". Either pull from the popular feed or your user feed. Default is set to popular
-		accessToken : '2513948.e029fea.1e7c505d3cca4f6a9738b37dee4bc47a', // This a mandatory setting that allows you to specify a user token. Default is 3794301.f59def8.e08bcd8b10614074882b2d1b787e2b6f
+		accessToken : '2513948.e029fea.3b6f532fa25d49278679e27c0430af0e', // This a mandatory setting that allows you to specify a user token. Default is 3794301.f59def8.e08bcd8b10614074882b2d1b787e2b6f
 		userID : '2513948', // This is a setting that you have to use if your using "user" mode. Default is "For stunning photography – Kevin Burg".
 		speed: 700, // Sets the speed of the images fade in effect, default is 700.
 		delayInterval : 80, // Sets the interval of the delay between photos appearing, default is 80.
 		searchBox : '.searchContainer .searchBox',
-		searchQuery: 'earthbeauty'
+		searchQuery: 'detroit'
 		
 	};
 	
