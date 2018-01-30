@@ -42,9 +42,11 @@ function instagramSearch(settings){
 
 	var searchQuery = jQuery(".searchBox").val().replace(/ /g,'');
 	jQuery(".maps-search-box").val(searchQuery);
-	jQuery('#searchBtn').focus().click();
+	jQuery("#searchBtn").focus().click();
+	jQuery(".coverflow").addClass("search")
     searchCMD(param, settings, searchQuery);
-}
+		
+		}
 
 function coverFlowIt() {
     const coverflowContainer = document.querySelector(".coverflow");
@@ -56,10 +58,12 @@ function coverFlowIt() {
 	jQuery( ".caption" ).on( "swiperight", viewNext);
 
 	function viewPrev( event ){
+		event.preventDefault();
 		viewPrevImage();
 	}
 	
 	function viewNext( event ){
+		event.preventDefault();
 		viewNextImage();
 	}	
     
@@ -357,9 +361,7 @@ jQuery.fn.instagramBrowser = function ( options ) {
 				instagramUserSearch(settings);
 			} else {
 				instagramSearch(settings);
-			}
-			jQuery('.searchContainer').addClass('hide')
-				
+			}				
 		});
 		
 		

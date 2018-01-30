@@ -3,21 +3,29 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
-<html >
+<html>
   <head>
     <meta charset="UTF-8">
-    <title>InstaExplora - Explore the World of People and Places</title>
+    <title>Go Somewhere Today - Explore the World and Go Somewhere</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="css/bootstrap.min.css">        
-		<link rel="stylesheet" href="css/animate.css">        
-		<link rel="stylesheet" href="css/font-awesome.min.css">
-    	<link rel="stylesheet" href="weatherapp/css/weather.min.css">
-        <link rel="stylesheet" href="css/style.css">  
-        <link rel="stylesheet" href="css/coverflow.min.css">  
+				<meta name="apple-mobile-web-app-title" content="Go Somewhere">
+				<meta name="application-name" content="Go Somewhere">
+				<meta name="msapplication-TileColor" content="#ffffff">
+				<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+				<meta name="theme-color" content="#ffffff">		
+				<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+				<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+				<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+				<link rel="manifest" href="/manifest.json">
+				<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#a1a1a1">
+				<link rel="stylesheet" href="css/bootstrap.min.css">        
+				<link rel="stylesheet" href="css/animate.css">        
+				<link rel="stylesheet" href="css/font-awesome.min.css">
+				<link rel="stylesheet" href="weatherapp/css/weather.min.css">
+				<link rel="stylesheet" href="css/style.css">  
+				<link rel="stylesheet" href="css/coverflow.css">  
         
-	
-	</script>
 	<!--[if lt IE 9]>
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -30,18 +38,16 @@
 	Your browser does not support the audio element and voice automation.
 </audio>
 <div class="contentwell">
-	<header>
-	   	<h1 class="center-text uppercase bold no-padding">Travel the World frome Home</h1>
-	</header>
-	<br />
-	<p class="lead center-text typed-out"></p>
-	<p class="lead center-text hide retry-text"></p>
-	<br />
-	<a href="#" id="start_button" class="uppercase bold hide" onclick="startDictation(event)"> Ask me <i aria-hidden="true" class="fa fa-microphone fa-3 dictation"></i></a></h3>
-	<br />
-	<div class="searchContainer margin-top hide animated">
-		<label>Search the Worlds People and Places</label>
-		<input class="searchBox year-entry" name="search" onfocus="this.value=''" rel="hashtag" type="text" value="Search for people and places"> <a class="searchInstagram btn btn-default center-text">Search</a>
+	
+
+	<div class="searchContainer margin-top animated">
+		<img src="images/logo-gosomewhere.today-02-trans-white.png" width="100" class="img-responsive logo" />
+		<h1 class="uppercase">Go Somewhere</h1>
+		<p class="typed-out lead"></p>
+		<div class="input-holder">
+			<input class="searchBox year-entry" maxlength="30" name="search" onfocus="this.value=''" rel="hashtag" type="text" value="Type a city, state, country">	<a href="#" id="start_button" class="fix uppercase bold" onclick="startDictation(event)"> <i aria-hidden="true" class="fa fa-microphone fa-3 dictation"></i></a></h3>
+		</div>	
+	<a class="searchInstagram btn btn-default center-text">Go</a>
 	</div>	
 	<div class="row animated speech-wave">
 		<div class="col-md-12">	
@@ -81,7 +87,7 @@
 	<div class="demo coverflow" id="cover"></div>
 		<a class="prev-arrow"></a>
 		<a class="next-arrow"></a>
-	<a class="search-open"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a>
+	<a class="search-open hide"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a>
 	<a class="reset" href="/peopleandplaces/">Reset Me</a>
 
 	<br />
@@ -99,11 +105,11 @@
 </div>
 <div class="video-selection four">
 </div>
-<div class="video-background animate">
+<!-- <div class="video-background blend animate">
     <div class="video-foreground">
       <iframe id="ytplayer" class="movie" src="https://www.youtube.com/embed/UnKJL_ifwkk?controls=0&start=40&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1" frameborder="0" allowfullscreen target="_parent"></iframe>
 	</div>
-</div>
+</div> -->
 <br />
 <br />
 <br />
@@ -112,10 +118,6 @@
 <br />
 <div class="weatherapp">
 	<div id="appContainer">
-		<div id="cloudBack">
-			<h1>You are in</h1><h3 id="currentCity"></h3>
-		</div>
-
 		<div id="searchContainer" class="hide">
 			<div id="leftSearch" class="search">
 				<label for="search">Search for location:</label>
@@ -144,15 +146,11 @@
 
 			<div id="weatherBoxes">
 				<div class="weatherBoxDivs todayBox hide">
-				<br />
-					<h2 class="bold uppercase">Today's Forecast</h2>
 					<br />
 					<div class="todayInfo" id="todayLeft"></div>
 					<div class="todayInfo" id="todayCenter"></div>
 					<div class="todayInfo" id="todayRight"></div>
 				</div>
-				<br />
-				<h3 class="bold uppercase text-center">3 Day Forecast</h3>
 				<br />
 				<div class="weatherBoxDivs threeDayBox fiveDayBox tenDayBox active three" id="day0"></div>
 				<div class="weatherBoxDivs threeDayBox fiveDayBox tenDayBox active three" id="day1"></div>
@@ -166,10 +164,10 @@
 				<div class="weatherBoxDivs tenDayBox" id="day9"></div>
 			</div>
 		</div>
-		<a class="video-control animated" href="#"><i class="fa fa-pause-circle-o fa-3x" aria-hidden="true"></i></a>
+<!-- 		<a class="video-control animated" href="#"><i class="fa fa-pause-circle-o fa-3x" aria-hidden="true"></i></a>
 		<a class="video-control-play animated" href="#"><i class="fa fa-play-circle-o fa-3x" aria-hidden="true"></i></a>
-
-		<div id="map">
+ -->
+		<div id="map" class="showme">
 		</div>
 	</div>
 </div>
@@ -180,10 +178,8 @@
 	<script type="text/javascript" src="js/instagramBrowser.js"></script>
     <script type="text/javascript" src="js/typed.min.js"></script>
 	<script type="text/javascript" src="js/index.min.js"></script>
-	<script type="text/javascript" src="js/jquery.easing.min.js"></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKPSH0QWdtt5u7TAumEcMtCSqXKmw-tXw&libraries=places"></script>    
 	<script src="weatherapp/js/weather_map.min.js"></script>
-    
   </body>
 </html>
 
