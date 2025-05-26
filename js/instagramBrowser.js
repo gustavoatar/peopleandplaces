@@ -428,7 +428,7 @@ jQuery.fn.instagramBrowser = function ( options ) {
 // 				});				
 // 			}			
 // 		},".instagram-photo");
-		jQuery(window).load(function(){
+		jQuery(window).on('load', function(){
 			coverFlowIt();
 		});
 	});

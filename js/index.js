@@ -175,51 +175,114 @@ jQuery(document).ready(function($){
 		jQuery('.coverflow__image').css('margin','0');
 
 	});	
-		
-	jQuery('.final').bind("DOMSubtreeModified", function() {
-		var voiceInput = interim_span.innerHTML;
-		if (voiceInput.indexOf('Philippines') !== -1) {
-			jQuery('.year-entry').val('Philippines' + 'travel');
-			jQuery('body').attr('class','');
-			jQuery('body').toggleClass('phillipines');
-			jQuery('.searchInstagram').click();
-			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/gfl4ZJFbxkE?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
-			jQuery('.typed-out').addClass('fadeOut').addClass('hide');
 
+	const voiceCommandActions = [
+		{
+			keyword: 'Philippines',
+			action: function() {
+				jQuery('.year-entry').val('Philippines' + 'travel');
+				jQuery('body').attr('class', '').addClass('philippines');
+				jQuery('.searchInstagram').click();
+				jQuery('.movie').attr('src', 'https://www.youtube.com/embed/gfl4ZJFbxkE?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
+				jQuery('.typed-out').addClass('fadeOut').addClass('hide');
+			}
+		},
+		{
+			keyword: 'China',
+			action: function() {
+				jQuery('.year-entry').val('China' + 'travel');
+				jQuery('body').attr('class', '').addClass('china');
+				jQuery('.searchInstagram').click();
+				jQuery('.movie').attr('src', 'https://www.youtube.com/embed/6G7rUuh74bM?controls=0&start=20&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
+				jQuery('.typed-out').addClass('fadeOut').addClass('hide');
+			}
+		},
+		{
+			keyword: 'Argentina',
+			action: function() {
+				jQuery('.year-entry').val('Argentina' + 'travel');
+				jQuery('body').attr('class', '').addClass('argentina');
+				jQuery('.searchInstagram').click();
+				jQuery('.movie').attr('src', 'https://www.youtube.com/embed/d90JYK916AU?controls=0&start=20&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
+				jQuery('.typed-out').addClass('fadeOut').addClass('hide');
+			}
+		},
+		{
+			keyword: 'Israel',
+			action: function() {
+				jQuery('.year-entry').val('Israel' + 'travel');
+				jQuery('body').attr('class', '').addClass('israel');
+				jQuery('.searchInstagram').click();
+				jQuery('.movie').attr('src', 'https://www.youtube.com/embed/8ukVw0iyB94?controls=0&start=10&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
+				jQuery('.typed-out').addClass('fadeOut').addClass('hide');
+			}
+		},
+		{
+			keyword: 'Dubai',
+			action: function() {
+				jQuery('.year-entry').val('Dubai' + 'travel');
+				jQuery('body').attr('class', '').addClass('dubai');
+				jQuery('.searchInstagram').click();
+				jQuery('.movie').attr('src', 'https://www.youtube.com/embed/SLaYPmhse30?controls=0&start=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
+				jQuery('.typed-out').addClass('fadeOut').addClass('hide');
+			}
 		}
-		if (voiceInput.indexOf('China') !== -1) {
-			jQuery('.year-entry').val('China' + 'travel');
-			jQuery('body').attr('class','');
-			jQuery('body').toggleClass('china');
-			jQuery('.searchInstagram').click();
-			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/6G7rUuh74bM?controls=0&start=20&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
-			jQuery('.typed-out').addClass('fadeOut').addClass('hide');		
+	];
+		
+	jQuery('.final').on("DOMSubtreeModified", function() {
+		var voiceInput = interim_span.innerHTML; // Or consider final_transcript
+		const lowerVoiceInput = voiceInput.toLowerCase();
+
+		for (const command of voiceCommandActions) {
+			if (lowerVoiceInput.includes(command.keyword.toLowerCase())) {
+				command.action();
+				break; 
+			}
+		}
+
+		// Commented out original if blocks for refactored commands:
+		// if (voiceInput.indexOf('Philippines') !== -1) {
+		// 	jQuery('.year-entry').val('Philippines' + 'travel');
+		// 	jQuery('body').attr('class','');
+		// 	jQuery('body').toggleClass('phillipines');
+		// 	jQuery('.searchInstagram').click();
+		// 	jQuery('.movie').attr('src', 'https://www.youtube.com/embed/gfl4ZJFbxkE?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
+		// 	jQuery('.typed-out').addClass('fadeOut').addClass('hide');
+
+		// }
+		// if (voiceInput.indexOf('China') !== -1) {
+		// 	jQuery('.year-entry').val('China' + 'travel');
+		// 	jQuery('body').attr('class','');
+		// 	jQuery('body').toggleClass('china');
+		// 	jQuery('.searchInstagram').click();
+		// 	jQuery('.movie').attr('src', 'https://www.youtube.com/embed/6G7rUuh74bM?controls=0&start=20&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
+		// 	jQuery('.typed-out').addClass('fadeOut').addClass('hide');		
 	
-		}
-		if (voiceInput.indexOf('Argentina') !== -1) {
-			jQuery('.year-entry').val('Argentina' + 'travel');
-			jQuery('body').attr('class','');
-			jQuery('body').toggleClass('argentina');
-			jQuery('.searchInstagram').click();
-			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/d90JYK916AU?controls=0&start=20&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
-			jQuery('.typed-out').addClass('fadeOut').addClass('hide');
-		}		
-		if (voiceInput.indexOf('Israel') !== -1 ){
-			jQuery('.year-entry').val('Israel' + 'travel');
-			jQuery('body').attr('class','');
-			jQuery('body').toggleClass('israel');
-			jQuery('.searchInstagram').click();
-			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/8ukVw0iyB94?controls=0&start=10&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
-			jQuery('.typed-out').addClass('fadeOut').addClass('hide');
-		} 
-		if (voiceInput.indexOf('Dubai') !== -1 ){
-			jQuery('.year-entry').val('Dubai' + 'travel');
-			jQuery('body').attr('class','');
-			jQuery('body').toggleClass('dubai');
-			jQuery('.searchInstagram').click();
-			jQuery('.movie').attr('src', 'https://www.youtube.com/embed/SLaYPmhse30?controls=0&start=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
-			jQuery('.typed-out').addClass('fadeOut').addClass('hide');
-		}  		 
+		// }
+		// if (voiceInput.indexOf('Argentina') !== -1) {
+		// 	jQuery('.year-entry').val('Argentina' + 'travel');
+		// 	jQuery('body').attr('class','');
+		// 	jQuery('body').toggleClass('argentina');
+		// 	jQuery('.searchInstagram').click();
+		// 	jQuery('.movie').attr('src', 'https://www.youtube.com/embed/d90JYK916AU?controls=0&start=20&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
+		// 	jQuery('.typed-out').addClass('fadeOut').addClass('hide');
+		// }		
+		// if (voiceInput.indexOf('Israel') !== -1 ){
+		// 	jQuery('.year-entry').val('Israel' + 'travel');
+		// 	jQuery('body').attr('class','');
+		// 	jQuery('body').toggleClass('israel');
+		// 	jQuery('.searchInstagram').click();
+		// 	jQuery('.movie').attr('src', 'https://www.youtube.com/embed/8ukVw0iyB94?controls=0&start=10&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
+		// 	jQuery('.typed-out').addClass('fadeOut').addClass('hide');
+		// } 
+		// if (voiceInput.indexOf('Dubai') !== -1 ){
+		// 	jQuery('.year-entry').val('Dubai' + 'travel');
+		// 	jQuery('body').attr('class','');
+		// 	jQuery('body').toggleClass('dubai');
+		// 	jQuery('.searchInstagram').click();
+		// 	jQuery('.movie').attr('src', 'https://www.youtube.com/embed/SLaYPmhse30?controls=0&start=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1');
+		// 	jQuery('.typed-out').addClass('fadeOut').addClass('hide');
+		// }  		 
 		if (voiceInput.indexOf('Peru') !== -1 ){
 			jQuery('.year-entry').val('Peru' + 'travel');
 			jQuery('body').attr('class','');

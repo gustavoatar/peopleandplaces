@@ -234,8 +234,17 @@ $(document).ready(function () {
 
     }
 function loadWeather() {
-        $.get("https://api.openweathermap.org/data/2.5/forecast/daily", {
-            APPID: "a824ef2e2591bd239228beab33789010",
+        // $.get("https://api.openweathermap.org/data/2.5/forecast/daily", {
+        //     APPID: "a824ef2e2591bd239228beab33789010",
+        //     lat: lat,
+        //     lon: lng,
+        //     units: "imperial",
+        //     cnt: "10"
+        // }).done(function (data) {
+        // data.list.forEach(function (el, i) {
+        // today = new Date().getDay();
+        // Note: This $.get call is intended to work with a backend proxy that manages the API key.
+        $.get("/weather", {
             lat: lat,
             lon: lng,
             units: "imperial",
