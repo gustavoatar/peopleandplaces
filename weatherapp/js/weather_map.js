@@ -296,6 +296,12 @@ function loadWeather() {
         
             $("#currentCity").html(data.city.name);  //update current city
 
+            // Fetch YouTube Shorts for the current city
+            if (typeof fetchYouTubeShorts === 'function') {
+                fetchYouTubeShorts(data.city.name);
+            } else {
+                console.error('fetchYouTubeShorts function not found.');
+            }
 
         });
     }

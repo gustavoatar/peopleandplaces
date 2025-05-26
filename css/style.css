@@ -1523,3 +1523,50 @@ i.fa-3{ font-size: 1.3em; }
 		margin-left: -36px;
 	}	
 }
+
+/* YouTube Shorts Feed Styling */
+.youtube-shorts-feed-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f8f8; /* Light background for the container */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.youtube-shorts-feed-container.hide {
+    display: none;
+}
+
+.youtube-shorts-feed-container .feed-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.shorts-scrollable-area {
+    max-height: 500px; /* Adjust as needed */
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 5px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    display: flex; /* For arranging shorts if needed, or remove if stacking vertically */
+    flex-direction: column; /* Stack items vertically */
+    gap: 10px; /* Space between shorts items */
+}
+
+/* Basic styling for individual short items (can be refined later) */
+.short-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+.short-item:last-child {
+    border-bottom: none;
+}
+.short-item iframe {
+    width: 100%; /* Responsive width */
+    max-width: 320px; /* Typical short width, adjust as needed */
+    height: 560px; /* Typical short height, adjust as needed */
+    display: block;
+    margin: 0 auto; /* Center the iframe */
+}

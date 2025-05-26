@@ -102,6 +102,48 @@ function startDictation(event) {
 	interim_span.innerHTML = '';
 }
 
+function fetchYouTubeShorts(cityName) {
+    console.log("Fetching YouTube Shorts for:", cityName);
+    var searchQuery = cityName + " YouTube Shorts travel";
+
+    $.ajax({
+        url: "/youtube-shorts-feed", // Conceptual backend proxy
+        type: "GET",
+        data: {
+            query: searchQuery,
+            maxResults: 10 // Example: Ask for 10 results
+        },
+        success: function(response) {
+            console.log("YouTube Shorts response:", response);
+            var feedDiv = $('#youtube-shorts-feed');
+            feedDiv.empty(); // Clear previous results
+
+            $('.youtube-shorts-feed-container .city-name-placeholder').text(cityName);
+
+            if (response && response.items && response.items.length > 0) {
+                response.items.forEach(function(item) {
+                    if (item.id && item.id.videoId) {
+                        var videoId = item.id.videoId;
+                        var iframeHtml = '<div class="short-item"><iframe src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
+                        feedDiv.append(iframeHtml);
+                    }
+                });
+            } else {
+                feedDiv.append('<p>No YouTube Shorts found for ' + cityName + '.</p>');
+            }
+            $('.youtube-shorts-feed-container').removeClass('hide').addClass('fadeIn');
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error("Error fetching YouTube Shorts:", textStatus, errorThrown);
+            var feedDiv = $('#youtube-shorts-feed');
+            feedDiv.empty();
+            feedDiv.append('<p>Sorry, could not load YouTube Shorts at this time.</p>');
+            $('.youtube-shorts-feed-container .city-name-placeholder').text(cityName);
+            $('.youtube-shorts-feed-container').removeClass('hide').addClass('fadeIn');
+        }
+    });
+}
+
 jQuery(document).ready(function($){
 	jQuery('.demo').instagramBrowser({
 		accessToken : '2513948.e029fea.3b6f532fa25d49278679e27c0430af0e',
